@@ -117,7 +117,7 @@ def repo():
     print('[1;33mInstalling/Updating the repo...')
     os.chdir('/notebooks')
     if not os.path.exists('ComfyUI'):
-        call('git clone -q --depth 1 https://github.com/comfyanonymous/ComfyUI', shell=True)
+        call('git clone -q https://github.com/comfyanonymous/ComfyUI', shell=True)
 
     os.chdir('ComfyUI')
     call('git reset --hard', shell=True)
@@ -145,10 +145,13 @@ def mdls(Original_Model_Version, Path_to_MODEL, MODEL_LINK, Temporary_Storage=Fa
         call('mkdir /notebooks/ComfyUI/models/vae', shell=True)
 
     # Upscale models
-    call('wget -q -O https://huggingface.co/embed/upscale/resolve/main/4x-UltraSharp.pth /notebooks/ComfyUI/models/upscale_models/4x-UltraSharp.pth', shell=True)
+    call('wget -q -O /notebooks/ComfyUI/models/upscale_models/4x-UltraSharp.pth https://huggingface.co/embed/upscale/resolve/main/4x-UltraSharp.pth', shell=True)
 
     # VAE models
-    call('wget -q -O https://huggingface.co/AIARTCHAN/aichan_blend/raw/main/vae/BerrysMix.vae.safetensors /notebooks/ComfyUI/models/vae/BerrysMix.vae.safetensors', shell=True)
+    call('wget -q -O /notebooks/ComfyUI/models/vae/BerrysMix.vae.safetensors https://huggingface.co/AIARTCHAN/aichan_blend/raw/main/vae/BerrysMix.vae.safetensors', shell=True)
+
+    # Checkpoints
+    call('wget -q -O /notebooks/ComfyUI/models/checkpoints/svd_xt.safetensors https://huggingface.co/stabilityai/stable-video-diffusion-img2vid-xt/resolve/main/svd_xt.safetensors', shell=True)
 
     call('ln -s /datasets/stable-diffusion-classic/SDv1.5.ckpt /notebooks/ComfyUI/models/checkpoints', shell=True, stdout=open('/dev/null', 'w'), stderr=open('/dev/null', 'w'))
     call('ln -s /datasets/stable-diffusion-v2-1-base-diffusers/stable-diffusion-2-1-base/v2-1_512-nonema-pruned.safetensors /notebooks/ComfyUI/models/checkpoints', shell=True, stdout=open('/dev/null', 'w'), stderr=open('/dev/null', 'w'))
