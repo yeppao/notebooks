@@ -148,7 +148,7 @@ def mdls(Original_Model_Version, Path_to_MODEL, MODEL_LINK, Temporary_Storage=Fa
     call('wget -q -O /notebooks/ComfyUI/models/upscale_models/4x-UltraSharp.pth https://huggingface.co/embed/upscale/resolve/main/4x-UltraSharp.pth', shell=True)
 
     # VAE models
-    call('wget -q -O /notebooks/ComfyUI/models/vae/BerrysMix.vae.safetensors https://huggingface.co/AIARTCHAN/aichan_blend/raw/main/vae/BerrysMix.vae.safetensors', shell=True)
+    call('wget -q -O /notebooks/ComfyUI/models/vae/BerrysMix.vae.safetensors https://huggingface.co/AIARTCHAN/aichan_blend/resolve/main/vae/BerrysMix.vae.safetensors', shell=True)
 
     # Checkpoints
     call('wget -q -O /notebooks/ComfyUI/models/checkpoints/svd_xt.safetensors https://huggingface.co/stabilityai/stable-video-diffusion-img2vid-xt/resolve/main/svd_xt.safetensors', shell=True)
